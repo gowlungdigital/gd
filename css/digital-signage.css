@@ -1,0 +1,296 @@
+/* HERO */
+.ds-hero{
+    height:50vh;
+    background:url('../images/digital-signage3.png') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.ds-hero::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+.ds-overlay{
+    position:relative;
+    z-index:2;
+}
+
+.ds-overlay h1{
+    font-size:58px;
+    letter-spacing:2px;
+}
+
+.ds-overlay p{
+    margin-top:10px;
+    opacity:0.8;
+}
+
+/* SECTION */
+.ds-block{
+    padding:100px 20px;
+    text-align:center;
+}
+
+/* TITLE */
+.ds-title{
+    font-size:34px;
+    color:#7da2ff;
+    margin-bottom:60px;
+}
+
+/* ROW */
+.ds-row{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* REVERSE */
+.ds-row.reverse{
+    flex-direction:row-reverse;
+}
+
+/* IMAGE */
+.ds-img{
+    flex:0 0 40%;
+    display:flex;
+    justify-content:center;
+}
+
+.ds-img img{
+    width:100%;
+    max-width:300px;
+    border-radius:20px;
+    object-fit:cover;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* TEXT */
+.ds-text{
+    flex:0 0 50%;
+    text-align:left;
+    color:#ccc;
+    font-size:20px;
+    line-height:1.8;
+}
+
+.ds-text p{
+    margin-bottom:15px;
+}
+
+.ds-text ul{
+    padding-left:10px;
+}
+
+.ds-text li{
+    margin-bottom:8px;
+}
+
+/* FEATURES */
+.ds-features{
+    padding:100px 20px;
+    text-align:center;
+}
+
+.ds-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:10px;
+    margin-top:40px;
+}
+
+.ds-card{
+    background:#151515;
+    padding:30px;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.ds-card:hover{
+    transform:translateY(-8px);
+    background:#1f1f1f;
+}
+
+/* CTA */
+.ds-cta{
+    padding:50px 20px;
+    text-align:center;
+    background: linear-gradient(90deg,#947a25,#614c06);
+}
+
+.ds-cta h2{
+    margin-bottom:10px;
+}
+
+.ds-cta p{
+    margin-bottom:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .ds-row{
+        flex-direction:column;
+        text-align:center;
+        gap:30px;
+    }
+
+    .ds-row.reverse{
+        flex-direction:column;
+    }
+
+    .ds-text{
+        text-align:center;
+        font-size:15px;
+    }
+
+    .ds-img img{
+        max-width:200px;
+    }
+
+    .ds-title{
+        font-size:24px;
+    }
+}
+
+
+/* WRAPPER supaya gambar tidak keluar */
+.ds-img{
+    flex:0 0 40%;
+    display:flex;
+    justify-content:center;
+    overflow:hidden; /* penting */
+    border-radius:20px;
+}
+
+/* IMAGE */
+.ds-img img{
+    width:100%;
+    max-width:260px;
+    border-radius:20px;
+    object-fit:cover;
+
+    transition:transform 0.5s ease; /* smooth */
+}
+
+/* HOVER EFFECT */
+.ds-img:hover img{
+    transform:scale(1.15);
+    box-shadow:0 20px 60px rgba(148,122,37,0.4); /* sesuai gold theme kamu */
+}
+
+/* LIGHTBOX BACKGROUND */
+.lightbox{
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+
+    justify-content:center;
+    align-items:center;
+}
+
+#lightbox-img{
+    max-width:90%;
+    max-height:85%;
+    border-radius:12px;
+}
+
+/* CLOSE BUTTON */
+.lightbox-close{
+    position:absolute;
+    top:20px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes zoomIn{
+    from{transform:scale(0.8); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* pastikan gambar bisa diklik */
+.ds-img{
+    flex:0 0 40%;
+    display:flex;
+    justify-content:center;
+    overflow:hidden;
+    border-radius:20px;
+    position:relative;
+    z-index:10;
+}
+
+.ds-img img{
+    width:100%;
+    max-width:260px;
+    border-radius:20px;
+    object-fit:cover;
+    cursor:zoom-in;
+
+    transition:transform 0.4s ease;
+}
+
+/* NONAKTIFKAN layer yang nutup klik */
+.section-dark::after,
+.ds-hero::after{
+    pointer-events:none;
+}
+
+/* LIST STYLE */
+.ds-text ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    text-align: left; 
+}
+
+/* ITEM */
+.ds-text li{
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px; 
+}
+
+/* PANAH CUSTOM */
+.ds-text li::before{
+    content: ">"; 
+    position: absolute;
+    left: 0;
+    color: #947a25; 
+    font-weight: bold;
+}
+
+/* pastikan tidak ada yang nutup klik */
+.ds-img{
+    position: relative;
+    z-index: 20;
+}
+
+.ds-img img{
+    position: relative;
+    z-index: 21;
+    cursor: zoom-in;
+}
+
+/* pastikan overlay tidak blok */
+.ds-hero::after,
+.section-dark::after{
+    pointer-events: none;
+}
