@@ -40,13 +40,26 @@
 /* SECTION */
 .it-block{
     padding:100px 20px;
-    text-align:center;
+    /* text-align:center; */
 }
 
 .it-title{
+    max-width:1100px;
+    margin:0 auto 60px auto;
     font-size:34px;
     color:#947a25;
-    margin-bottom:60px;
+    padding-left:45px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .it-title{
+        padding-left:0;
+        text-align:center;
+        font-size:24px;
+    }
+
 }
 
 /* ROW */
@@ -67,8 +80,9 @@
     flex:0 0 40%;
     display:flex;
     justify-content:center;
-    overflow:hidden;
     border-radius:20px;
+    position:relative;
+    z-index:20;
 }
 
 .it-img img{
@@ -76,12 +90,18 @@
     max-width:260px;
     border-radius:20px;
     cursor:zoom-in;
-    transition:0.4s;
+    position:relative;
+    z-index:21;
+    object-fit:cover;
+
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 /* HOVER */
-.it-img:hover img{
-    transform:scale(1.15);
+.it-img img:hover{
+    transform:scale(1.08);
     box-shadow:0 20px 60px rgba(148,122,37,0.4);
 }
 
@@ -101,7 +121,7 @@
 /* LIST */
 .it-text ul{
     list-style:none;
-    padding-left:0;
+    padding-left:10px;
 }
 
 .it-text li{
@@ -135,6 +155,7 @@
     max-width:90%;
     max-height:85%;
     border-radius:12px;
+    animation: zoomIn 0.3s ease;
 }
 
 .lightbox-close{
@@ -184,10 +205,7 @@
     cursor: zoom-in;
 }
 
-/* BIAR OVERLAY TIDAK NUTUP */
 .it-hero::after,
 .section-dark::after{
     pointer-events: none;
 }
-
-

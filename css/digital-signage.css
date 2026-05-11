@@ -186,9 +186,9 @@
 }
 
 /* HOVER EFFECT */
-.ds-img:hover img{
-    transform:scale(1.15);
-    box-shadow:0 20px 60px rgba(148,122,37,0.4); /* sesuai gold theme kamu */
+.ds-img img:hover{
+    transform:scale(1.08);
+    box-shadow:0 20px 60px rgba(148,122,37,0.4); 
 }
 
 /* LIGHTBOX BACKGROUND */
@@ -272,7 +272,7 @@
 
 /* PANAH CUSTOM */
 .ds-text li::before{
-    content:"✔";
+    content:"> ";
     position: absolute;
     left: 0;
     color: #947a25; 
@@ -295,4 +295,8 @@
 .ds-hero::after,
 .section-dark::after{
     pointer-events: none;
+}
+
+#lightbox-img{
+    animation: zoomIn 0.3s ease;
 }

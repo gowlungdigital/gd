@@ -1,0 +1,322 @@
+/* =======================================================
+   HEADER / NAVBAR
+======================================================= */
+
+#navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 50px;
+    background:rgba(235, 228, 228, 0.637);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(235, 228, 228, 0.637);
+    transition:
+        padding 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    z-index: 1000;
+}
+
+/* NAVBAR SAAT SCROLL KE BAWAH */
+#navbar.shrink{
+    padding: 10px 50px;
+    background: rgba(235, 228, 228, 0.637);
+    box-shadow: 0 5px 25px rgba(235, 228, 228, 0.637);
+}
+
+/* HIDE NAVBAR */
+#navbar.hide{
+    transform: translateY(-100%);
+}
+
+/* =======================================================
+   LOGO / TITLE
+======================================================= */
+
+#navbar h1{
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* =======================================================
+   MENU
+======================================================= */
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-menu a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+/* UNDERLINE EFFECT */
+.nav-menu a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #D4AF37;
+    transition: 0.3s ease;
+}
+
+.nav-menu a:hover{
+    color: #D4AF37;
+}
+
+.nav-menu a:hover::after{
+    width: 100%;
+}
+
+/* =======================================================
+   DROPDOWN
+======================================================= */
+
+.dropdown{
+    position: relative;
+}
+
+/* DROPDOWN BOX */
+.dropdown-content{
+    position: absolute;
+    top: 140%;
+    left: 0;
+    min-width: 240px;
+    background: rgba(20,20,20,0.96);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* SHOW DROPDOWN */
+.dropdown:hover .dropdown-content{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ITEM DROPDOWN */
+.dropdown-content a{
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.dropdown-content a:last-child{
+    border-bottom: none;
+}
+
+.dropdown-content a:hover{
+    background: rgba(212,175,55,0.12);
+    color: #D4AF37;
+}
+
+/* HILANGKAN UNDERLINE DROPDOWN */
+.dropdown-content a::after{
+    display: none;
+}
+
+/* =======================================================
+   HEADER STRIP
+======================================================= */
+
+.header-strip{
+    background: white;
+    color: black;
+    text-align: center;
+    padding: 140px 20px 60px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+.header-strip h1{
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header-strip h3{
+    margin-top: 8px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+/* =======================================================
+   ANIMATION
+======================================================= */
+
+@keyframes fadeIn{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media(max-width: 900px){
+
+    #navbar{
+        padding: 15px 25px;
+    }
+
+    #navbar h1{
+        font-size: 14px;
+        max-width: 220px;
+        line-height: 1.4;
+    }
+
+    .nav-menu{
+        gap: 16px;
+    }
+
+    .nav-menu a{
+        font-size: 12px;
+    }
+
+    .dropdown-content{
+        min-width: 200px;
+    }
+}
+
+
+
+
+/* =======================================================
+   RESPONSIVE NAVBAR
+======================================================= */
+
+/* LAPTOP KECIL */
+@media(max-width: 1200px){
+
+    #navbar{
+        padding: 15px 30px;
+    }
+
+    #navbar h1{
+        font-size: 15px;
+        max-width: 420px;
+    }
+
+    .nav-menu{
+        gap: 18px;
+    }
+
+    .nav-menu a{
+        font-size: 13px;
+    }
+}
+
+
+/* TABLET */
+@media(max-width: 900px){
+    #navbar{
+        padding: 14px 20px;
+    }
+    #navbar h1{
+        font-size: 13px;
+        max-width: 280px;
+        line-height: 1.4;
+        white-space: normal;
+    }
+
+    .nav-menu{
+        gap: 14px;
+    }
+
+    .nav-menu a{
+        font-size: 12px;
+    }
+
+    .dropdown-content{
+        min-width: 200px;
+    }
+}
+
+
+/* MOBILE */
+@media(max-width: 700px){
+    #navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 18px;
+    }
+    #navbar.shrink{
+        padding: 12px 18px;
+    }
+    #navbar h1{
+        font-size: 12px;
+        width: 100%;
+        line-height: 1.5;
+        letter-spacing: 1px;
+    }
+    .nav-menu{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .nav-menu a{
+        font-size: 11px;
+    }
+    .dropdown-content{
+        position: absolute;
+        left: 0;
+        top: 120%;
+        min-width: 180px;
+    }
+}
+
+
+/* MOBILE KECIL */
+@media(max-width: 480px){
+    #navbar h1{
+        font-size: 11px;
+    }
+
+    .nav-menu{
+        gap: 10px;
+    }
+
+    .nav-menu a{
+        font-size: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .dropdown-content{
+        min-width: 160px;
+    }
+
+}
