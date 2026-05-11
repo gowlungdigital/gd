@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us - PT Permata Gowlung Digital</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/about.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="about-hero">
+
+    <div>
+
+        <h1>TENTANG PT PERMATA GOWLUNG DIGITAL</h1>
+
+        <p>
+            Penghubung Inovasi dengan Solusi Masa Depan
+        </p>
+
+            <img src="images/logo-crop-bulat.png" class="about-logo">
+
+    </div>
+
+</section>
+
+<!-- CONTENT -->
+<section class="about-container">
+
+    <!-- COMPANY -->
+    <div class="about-block">
+
+        <h2 class="about-title">
+            PT Permata Gowlung Digital
+        </h2>
+
+        <p class="about-text">
+
+            PT Permata Gowlung Digital merupakan perusahaan yang bergerak di bidang
+            teknologi informasi dan solusi digital modern. Kami hadir untuk membantu
+            perusahaan, institusi, UMKM dan organisasi dalam membangun infrastruktur
+            digital yang handal, efisien, dan siap menghadapi perkembangan teknologi masa depan.
+
+            <br><br>
+
+            Keunggulan kami terletak pada kapabilitas teknis dan manajerial tim yang solid. 
+            Seluruh tenaga ahli kami didukung oleh standar kompetensi internasional, 
+            termasuk sertifikasi Red Hat untuk memastikan keandalan sistem berbasis Linux tingkat korporat, 
+            serta penerapan framework ITIL (Information Technology Infrastructure Library) untuk manajemen layanan IT yang terukur dan profesional.
+
+            <br><br>
+
+            Kami percaya bahwa transformasi digital bukan hanya tentang teknologi,
+            tetapi juga tentang bagaimana teknologi mampu meningkatkan produktivitas,
+            efisiensi, dan pertumbuhan bisnis secara berkelanjutan.
+
+        </p>
+
+    </div>
+
+    <!-- VISION MISSION -->
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <h3>VISION</h3>
+
+            <p>
+                Menjadi perusahaan solusi digital terpercaya yang mampu memberikan
+                inovasi teknologi terbaik bagi perkembangan bisnis modern di Indonesia.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>MISSION</h3>
+
+            <p>
+                Memberikan layanan teknologi yang profesional, inovatif,
+                scalable, dan berorientasi pada kebutuhan pelanggan
+                untuk mendukung transformasi digital yang berkelanjutan.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>OUR COMMITMENT</h3>
+
+            <p>
+                Kami berkomitmen menghadirkan kualitas layanan terbaik,
+                dukungan teknis yang responsif, serta solusi yang relevan
+                dengan kebutuhan industri modern.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<!-- LOAD FOOTER -->
+<script>
+
+fetch("footer.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("footer-placeholder").innerHTML = data;
+
+});
+
+</script>
+
+<!-- LOAD HEADER -->
+<script>
+
+fetch("header.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("header").innerHTML = data;
+
+    // NAVBAR EFFECT
+    const navbar = document.getElementById("navbar");
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+
+        let currentScroll = window.pageYOffset;
+
+        // SHRINK
+        if(currentScroll > 50){
+            navbar.classList.add("shrink");
+        }else{
+            navbar.classList.remove("shrink");
+        }
+
+        // HIDE
+        if(currentScroll > lastScroll && currentScroll > 120){
+
+            navbar.classList.add("hide");
+
+        }else{
+
+            navbar.classList.remove("hide");
+
+        }
+
+        lastScroll = currentScroll;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

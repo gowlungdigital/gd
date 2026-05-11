@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Initiative - Gowlung Digital</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/digitalinitiative.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="digital-hero">
+
+    <div class="digital-overlay">
+
+        <h1>DIGITAL INITIATIVE</h1>
+
+        <p>
+            Mendukung UMKM dan Bisnis Modern dengan Teknologi Digital
+        </p>
+
+    </div>
+
+</section>
+
+<!-- INTRO -->
+<section class="digital-section">
+
+    <div class="digital-container">
+
+        <h2 class="digital-title">
+            Siap Memulai Transformasi Digital?
+        </h2>
+
+        <p class="digital-text">
+
+            Gowlung Digital menghadirkan program
+            <strong>Digital Initiative</strong> untuk membantu UMKM,
+            perusahaan, dan bisnis modern dalam meningkatkan efisiensi,
+            produktivitas, serta kualitas layanan melalui penerapan teknologi digital.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="digital-services">
+
+    <div class="digital-container">
+
+        <h2 class="digital-title">
+            Solusi Digital Kami
+        </h2>
+
+        <div class="digital-grid">
+
+            <!-- CARD -->
+            <div class="digital-card">
+
+                <img src="images/chatbot.png" alt="AI Chatbot">
+
+                <h3>AI Auto Chatbot</h3>
+
+                <p>
+                    Solusi chatbot berbasis AI untuk layanan pelanggan otomatis,
+                    respons cepat, dan integrasi komunikasi bisnis modern.
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="digital-card">
+
+                <img src="images/monitoring2.png" alt="Monitoring Report">
+
+                <h3>Auto Monitoring Report</h3>
+
+                <p>
+                    Sistem monitoring dan reporting otomatis untuk membantu
+                    bisnis memantau performa operasional secara real-time.
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="digital-card">
+
+                <img src="images/cctv.png" alt="Smart CCTV">
+
+                <h3>Smart CCTV Solution</h3>
+
+                <p>
+                    Solusi CCTV pintar dengan monitoring modern,
+                    analitik video, dan sistem keamanan terintegrasi.
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="digital-card">
+
+                <img src="images/mps.png" alt="MPS">
+
+                <h3>Managed Print Service</h3>
+
+                <p>
+                    Solusi pengelolaan printer dan dokumen yang efisien,
+                    hemat biaya, dan mudah dimonitor.
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="digital-card">
+
+                <img src="images/drone.png" alt="Drone">
+
+                <h3>Drone Documentation</h3>
+
+                <p>
+                    Pengambilan gambar dan video menggunakan drone
+                    untuk kebutuhan dokumentasi, promosi, dan monitoring proyek.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<!-- LOAD FOOTER -->
+<script>
+
+fetch("footer.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("footer-placeholder").innerHTML = data;
+
+});
+
+</script>
+
+<!-- LOAD HEADER -->
+<script>
+
+fetch("header.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("header").innerHTML = data;
+
+    // NAVBAR EFFECT
+    const navbar = document.getElementById("navbar");
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+
+        let currentScroll = window.pageYOffset;
+
+        // SHRINK
+        if(currentScroll > 50){
+            navbar.classList.add("shrink");
+        }else{
+            navbar.classList.remove("shrink");
+        }
+
+        // HIDE
+        if(currentScroll > lastScroll && currentScroll > 120){
+
+            navbar.classList.add("hide");
+
+        }else{
+
+            navbar.classList.remove("hide");
+
+        }
+
+        lastScroll = currentScroll;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -4,20 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gowlung Digital</title>
+
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-    <h1>GOWLUNG DIGITAL - SOLUSI DIGITAL BISNIS ANDA</h1>  
-    <div>
-        <a href="#about">TENTANG KAMI</a>
-        <a href="#contact">KONTAK KAMI</a>
-        <a href="#services">LAYANAN KAMI</a>
-    </div>
-</nav>
+<!-- HEADER CONTAINER -->
+<!-- script header dibawah -->
+<div id="header"></div>
+
 
 <!-- HERO -->
 <div class="hero">
@@ -25,113 +23,86 @@
     <!-- BACKGROUND IMAGE (fallback / layer tambahan) -->
     <div class="hero-bg"></div>
 
-    <!-- VIDEO -->
-    <video autoplay muted loop>
-        <source src="video/hero.mp4" type="video/mp4">
-    </video>
-
     <!-- OVERLAY TEXT -->
-    <div class="overlay">
-        <h1>SMART BUSINESS SOLUTIONS</h1>
-        <p>COFFESHOP - CAFE - KLINIK - GYM - BISNIS MODERN</p>
-    </div>
+        <div class="overlay">
+            <div class="overlay-title">
+                <img src="images/logo-crop-bulat.png" alt="Logo" class="overlay-logo">
+                <h1>INNOVATIVE DIGITAL SOLUTIONS</h1>
+            </div>
+
+            <p>Penghubung Inovasi dengan Solusi Masa Depan</p>
+        </div>
 
 </div>
 
 <!-- SERVICES -->
-<section id="services">
-    <h3>LAYANAN KAMI</h3>
-
-    <div class="services">
-        <a href="it-solution.html" class="card">
-            <img src="images/it-solution2.png" class="card-icon">
-            <h3>IT SOLUTION</h3>
-            <p>Computing Solution - Network - Data Backup</p>
-        </a>
-
-        <a href="chatbot.html" class="card">
-            <img src="images/chatbot2.PNG" class="card-icon">
-            <h3>AI AUTO CHATBOT</h3>
-            <p>Layanan Pelanggan Otomatis</p>
-        </a>
-
-        <a href="monitoring.html" class="card">
-            <img src="images/monitoring3.png" class="card-icon">
-            <h3>AUTO MONITORING & REPORT</h3>
-            <p>Pelaporan Transaksi Secara Otomatis</p>
-        </a>
-
-        <a href="digital-signage.html" class="card">
-            <img src="images/digital-signage.png" class="card-icon">
-            <h3>DIGITAL SIGNAGE</h3>
-            <p>Display Menu & Promosi Otomatis</p>
-        </a>
-
-    </div>
-</section>
-
-<!-- GOLDEN STRIP -->
-<div class="red-strip">
-    <div class="strip-content">
-        <div>✔ PROFESSIONAL</div>
-        <div>✔ HANDAL</div>
-        <div>✔ MUDAH DIGUNAKAN</div>
-    </div>
-</div>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section-dark">
-    <div class="container">
-        <h2 class="section-title2">TENTANG KAMI</h2>
-        <div class="divider"></div>
-
-        <p class="section-text">
-            Gowlung Digital adalah penyedia solusi digital automation untuk berbagai jenis bisnis seperti cafe, klinik, gym, dan perusahaan modern lainnya. 
-            Kami membantu meningkatkan efisiensi operasional melalui teknologi seperti digital signage, AI chatbot, monitoring system, dan IT solutions.
-        </p>
-    </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section-dark">
-    <div class="container">
-        <h2 class="section-title2">KONTAK KAMI</h2>
-        <div class="divider"></div>
-
-        <p class="section-text">
-            Gowlung Digital<br>
-            Cipta Karya Blok A No 4 Pekanbaru<br>
-            No Contact : +62 821-7827-896<br>
-            Email : gowlungdigital@gmail.com
-        </p>
-
-        <div class="social-icons">
-            <a href="#contact"><img src="images/icon_wa.PNG" alt="WhatsApp"></a>
-            <a href="#"><img src="images/icon_x.PNG" alt="X"></a>
-            <a href="#"><img src="images/icon_fb.PNG" alt="Facebook"></a>
-            <a href="#"><img src="images/icon_tiktok.PNG" alt="TikTok"></a>
-            <a href="#"><img src="images/icon_ig.PNG" alt="Instagram"></a>
-            <a href="#"><img src="images/icon_yt.PNG" alt="YouTube"></a>
-        </div>
-        
-    </div>
-</section>
-
-<footer>
-    © 2026 GOWLUNG DIGITAL
-</footer>
+<div id="services-placeholder"></div>
 
 <script>
-window.addEventListener('scroll', function(){
-    const nav = document.getElementById('navbar');
-
-    if(window.scrollY > 50){
-        nav.classList.add('shrink');
-    } else {
-        nav.classList.remove('shrink');
-    }
-});
+fetch('services.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('services-placeholder').innerHTML = data;
+    });
 </script>
+
+
+<!-- SKRIP FOOTER -->
+<div id="footer-placeholder"></div>
+<script>
+fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+
+
+<!-- LOAD HEADER + NAVBAR SCRIPT -->
+<script>
+
+fetch("header.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("header").innerHTML = data;
+
+    // JALANKAN SETELAH HEADER SELESAI DILOAD
+    const navbar = document.getElementById("navbar");
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+
+        let currentScroll = window.pageYOffset;
+
+        // SHRINK
+        if(currentScroll > 50){
+            navbar.classList.add("shrink");
+        }else{
+            navbar.classList.remove("shrink");
+        }
+
+        // HIDE NAVBAR SAAT SCROLL KE BAWAH
+        if(currentScroll > lastScroll && currentScroll > 120){
+
+            navbar.classList.add("hide");
+
+        }else{
+
+            navbar.classList.remove("hide");
+
+        }
+
+        lastScroll = currentScroll;
+
+    });
+
+});
+
+</script>
+
+
 
 </body>
 </html>

@@ -7,19 +7,13 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/digital-signage.css">
+<link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-    <h1>GOWLUNG DIGITAL</h1>
-    <div>
-        <a href="index.html">HOME</a>
-        <a href="index.html#about">TENTANG</a>
-        <a href="index.html#contact">KONTAK</a>
-    </div>
-</nav>
+<!-- HEADER CONTAINER -->
+<div id="header"></div>
 
 <!-- HERO -->
 <section class="ds-hero">
@@ -125,122 +119,107 @@
 
 
 <!-- SERVICES -->
-<section id="services">
-    <h3>LAYANAN KAMI</h3>
-
-    <div class="services">
-
-        <a href="digital-signage.html" class="card">
-            <img src="images/digital-signage.png" class="card-icon">
-            <h3>DIGITAL SIGNAGE</h3>
-            <p>Display Menu & Promosi Otomatis</p>
-        </a>
-
-        <a href="chatbot.html" class="card">
-            <img src="images/chatbot2.PNG" class="card-icon">
-            <h3>AI AUTO CHATBOT</h3>
-            <p>Layanan Pelanggan Otomatis</p>
-        </a>
-
-        <a href="monitoring.html" class="card">
-            <img src="images/monitoring3.png" class="card-icon">
-            <h3>AUTO MONITORING & REPORT</h3>
-            <p>Pelaporan Transaksi Secara Otomatis</p>
-        </a>
-
-        <a href="it-solution.html" class="card">
-            <img src="images/it-solution2.png" class="card-icon">
-            <h3>IT SOLUTION</h3>
-            <p>Computing Solution - Network - Data Backup</p>
-        </a>
-
-    </div>
-</section>
-
-<!-- GOLDEN STRIP -->
-<div class="red-strip">
-    <div class="strip-content">
-        <div>✔ PROFESSIONAL</div>
-        <div>✔ HANDAL</div>
-        <div>✔ MUDAH DIGUNAKAN</div>
-    </div>
-</div>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section-dark">
-    <div class="container">
-        <h2 class="section-title2">TENTANG KAMI</h2>
-        <div class="divider"></div>
-
-        <p class="section-text">
-            Gowlung Digital adalah penyedia solusi digital automation untuk berbagai jenis bisnis seperti cafe, klinik, gym, dan perusahaan modern lainnya. 
-            Kami membantu meningkatkan efisiensi operasional melalui teknologi seperti digital signage, AI chatbot, monitoring system, dan IT solutions.
-        </p>
-    </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section-dark">
-    <div class="container">
-        <h2 class="section-title2">KONTAK KAMI</h2>
-        <div class="divider"></div>
-
-        <p class="section-text">
-            Gowlung Digital<br>
-            Cipta Karya Blok A No 4 Pekanbaru<br>
-            No Contact : +62 821-7827-896<br>
-            Email : gowlungdigital@gmail.com
-        </p>
-
-        <div class="social-icons">
-            <a href="#contact"><img src="images/icon_wa.PNG" alt="WhatsApp"></a>
-            <a href="#"><img src="images/icon_x.PNG" alt="X"></a>
-            <a href="#"><img src="images/icon_fb.PNG" alt="Facebook"></a>
-            <a href="#"><img src="images/icon_tiktok.PNG" alt="TikTok"></a>
-            <a href="#"><img src="images/icon_ig.PNG" alt="Instagram"></a>
-            <a href="#"><img src="images/icon_yt.PNG" alt="YouTube"></a>
-        </div>
-        
-    </div>
-</section>
-
-<footer>
-    © 2026 GOWLUNG DIGITAL
-</footer>
-
-<!-- ================= SKRIP ================= -->
 <script>
-document.addEventListener("DOMContentLoaded", function(){
+fetch('services.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('services-placeholder').innerHTML = data;
+    });
+</script>
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const closeBtn = document.querySelector(".lightbox-close");
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+<script>
+fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
 
-    document.querySelectorAll(".ds-img img").forEach(img => {
+<!-- LOAD HEADER + NAVBAR SCRIPT -->
+<script>
 
-        img.addEventListener("click", function(){
-            lightbox.style.display = "flex";
-            lightboxImg.src = this.src;
-        });
+fetch("header.html")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("header").innerHTML = data;
+
+    // JALANKAN SETELAH HEADER SELESAI DILOAD
+    const navbar = document.getElementById("navbar");
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+
+        let currentScroll = window.pageYOffset;
+
+        // SHRINK
+        if(currentScroll > 50){
+            navbar.classList.add("shrink");
+        }else{
+            navbar.classList.remove("shrink");
+        }
+
+        // HIDE NAVBAR SAAT SCROLL KE BAWAH
+        if(currentScroll > lastScroll && currentScroll > 120){
+
+            navbar.classList.add("hide");
+
+        }else{
+
+            navbar.classList.remove("hide");
+
+        }
+
+        lastScroll = currentScroll;
 
     });
 
-    closeBtn.onclick = () => lightbox.style.display = "none";
+});
 
-    lightbox.onclick = function(e){
-        if(e.target !== lightboxImg){
-            lightbox.style.display = "none";
-        }
-    };
+</script>
 
+
+<!-- LIGHTBOX untuk bisa di klik -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+const images = document.querySelectorAll('.ds-img img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('lightbox-close');
+
+// buka gambar
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+    });
+});
+
+// tombol close
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+
+// klik area gelap untuk close
+lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox){
+        lightbox.style.display = 'none';
+    }
 });
 </script>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img">
-</div>
+
+
+
+
+
 
 </body>
 </html>
