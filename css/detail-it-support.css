@@ -1,0 +1,173 @@
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.it-support-page{
+    width:100%;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.78),
+        rgba(0,0,0,0.78)
+    ),
+    url('../images/solution.PNG');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    padding:140px 20px 80px 20px;
+    box-sizing:border-box;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.it-support-container{
+    max-width:1100px;
+    margin:0 auto;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.it-support-title{
+    margin-bottom:40px;
+}
+
+.it-support-title h1{
+    font-size:42px;
+    line-height:1.2;
+    color:white;
+    margin-bottom:18px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.it-support-title p{
+    font-size:17px;
+    line-height:1.9;
+    color:rgba(255,255,255,0.88);
+    max-width:950px;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.support-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:28px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.support-card{
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-sizing:border-box;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s ease;
+}
+
+.support-card:hover{
+    transform:translateY(-4px);
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.support-card h2{
+    font-size:24px;
+    color:white;
+    margin-bottom:16px;
+    line-height:1.4;
+}
+
+.support-card p{
+    font-size:16px;
+    line-height:1.9;
+    color:rgba(255,255,255,0.85);
+    margin-bottom:16px;
+}
+
+.support-card ul{
+    padding-left:20px;
+    margin:0;
+}
+
+.support-card ul li{
+    font-size:15px;
+    color:rgba(255,255,255,0.82);
+    line-height:1.9;
+    margin-bottom:8px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .support-grid{
+        grid-template-columns:1fr;
+    }
+
+    .it-support-title h1{
+        font-size:34px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .it-support-page{
+        padding:120px 16px 70px 16px;
+
+        background-attachment:scroll;
+    }
+
+    .it-support-title h1{
+        font-size:28px;
+    }
+
+    .it-support-title p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .support-card{
+        padding:24px;
+        border-radius:16px;
+    }
+
+    .support-card h2{
+        font-size:21px;
+    }
+
+    .support-card p,
+    .support-card ul li{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+}
